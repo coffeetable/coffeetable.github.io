@@ -1,0 +1,22 @@
+theme = "hugo-uno"
+languageCode = "ja-JP"
+contentdir = "content"
+layoutdir  = "layouts"
+publishdir = "public"
+builddrafts = false
+baseurl = "http://coffeetable.github.io"
+title = "COFFEETABLE"
+canonifyurls = true
+paginate = 5
+author = "Yasuhiro Manai"
+DisqusShortname = "YOUR_SHORT_NAME_HERE"
+Copyright = "All rights reserved - 2015"
+
+[indexes]
+   category = "categories"
+   tag = "tags"
+
+[params]
+  author = "Yasuhiro Manai"
+  description = "Blog in Engineering by two of us from Hong Kong."
+  cover = "/images/cover.jpg"
