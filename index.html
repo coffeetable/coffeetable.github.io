@@ -6,16 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title> COFFEETABLE &middot; COFFEETABLE </title>
     
-    <link rel="stylesheet" type="text/css" href="https://coffeetable.github.io/css/uno.min.css" />
-    <link rel="stylesheet" type="text/css" href="https://coffeetable.github.io/css/lightGallery.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/uno.min.css" />
+    <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/lightGallery.css" />
     
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://coffeetable.github.io/apple-touch-icon-144-precomposed.png">
-    <link rel="shortcut icon" href="https://coffeetable.github.io/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:1313/apple-touch-icon-144-precomposed.png">
+    <link rel="shortcut icon" href="http://localhost:1313/favicon.ico">
     
-    <link href="https://coffeetable.github.io/index.xml" rel="alternate" type="application/rss+xml" title="COFFEETABLE" />
+    <link href="http://localhost:1313/index.xml" rel="alternate" type="application/rss+xml" title="COFFEETABLE" />
     
-    <script src="https://coffeetable.github.io/js/jquery.min.js"></script>
-    <script src="https://coffeetable.github.io/js/main.min.js">
+    <script src="http://localhost:1313/js/jquery.min.js"></script>
+    <script src="http://localhost:1313/js/main.min.js">
     </script>
 </head>
 
@@ -30,7 +30,7 @@
         <div class="panel-main__inner panel-inverted">
             <div class="panel-main__content"> 
                 <h1 class="panel-cover__title panel-title">
-                    <a href="https://coffeetable.github.io"  title="link to homepage for COFFEETABLE">COFFEETABLE</a>
+                    <a href="http://localhost:1313"  title="link to homepage for COFFEETABLE">COFFEETABLE</a>
                 </h1>
                 <hr class="panel-cover__divider" />
                 <p class="panel-cover__description">  Blog in Engineering by two of us from Hong Kong.  </p>
@@ -38,7 +38,7 @@
                 <div class="navigation-wrapper">
                     <nav class="cover-navigation cover-navigation--primary">
                         <ul class="navigation">
-                            <li class="navigation__item"><a href="https://coffeetable.github.io/#blog" title="link to COFFEETABLE blog" class="blog-button">Blog</a> </li>
+                            <li class="navigation__item"><a href="http://localhost:1313/#blog" title="link to COFFEETABLE blog" class="blog-button">Blog</a> </li>
                             </br>  </ul>
                     </nav> <nav class="cover-navigation navigation--social">
     <ul class="navigation">    </br>    </ul>
@@ -59,7 +59,7 @@
             <div class="panel-main__inner panel-inverted">
                 <div class="panel-main__content"> 
                     <h1 class="panel-cover__title panel-title">
-                        <a href="https://coffeetable.github.io"  title="link to homepage for COFFEETABLE">COFFEETABLE</a>
+                        <a href="http://localhost:1313"  title="link to homepage for COFFEETABLE">COFFEETABLE</a>
                     </h1>
                     <hr class="panel-cover__divider" />
                     <p class="panel-cover__description">  Blog in Engineering by two of us from Hong Kong.  </p>
@@ -67,7 +67,7 @@
                     <div class="navigation-wrapper">
                         <nav class="cover-navigation cover-navigation--primary">
                             <ul class="navigation">
-                                <li class="navigation__item"><a href="https://coffeetable.github.io/#blog" title="link to COFFEETABLE blog" class="blog-button">Blog</a> </li>
+                                <li class="navigation__item"><a href="http://localhost:1313/#blog" title="link to COFFEETABLE blog" class="blog-button">Blog</a> </li>
                                 </br>  </ul>
                         </nav> <nav class="cover-navigation navigation--social">
     <ul class="navigation">    </br>    </ul>
@@ -88,7 +88,94 @@
                             
                                 <article class="post">
 <header>
-  <h2 class="post-title"><a href="https://coffeetable.github.io/2015/03/30/importance-of-canguilhem/">Importance of Canguilhem </a> </h2>
+  <h2 class="post-title"><a href="http://localhost:1313/2015/03/30/frist-steps-using-postgresql/">Frist steps using PostgreSQL </a> </h2>
+  <div class="post-meta">Mar 30, 2015</div>
+</header>
+<div class="summary">
+    
+
+<p>PostgreSQLを久々に利用するのに、基本的なコマンドを調べたため、まとめておく。</p>
+
+<h2 id="open-source-database-market-share-in-2011:4c50abb395f342fbaa208b80f6daec6b">Open source database market share in 2011</h2>
+
+<p>その前に久々に市場シェアを調べてみたところ、<a href="http://jelastic.com/">Jelastic.com</a>による彼らのサービスを利用する1,000人の開発者によるDB選択のマーケットシェア分析の発表レポート<a href="http://readwrite.com/2011/10/21/mysql-leads-open-source-market">*1</a>を見た。2011年10月時点の分析結果である。ちなみにJelasticとはロシアのJavaに特化したPaaSを提供するHerokuのようなサービスだ。日本では使えるねっと株式会社が提供している<a href="https://www.tsukaeru.net/info/press_release/06/1195">*2</a>。</p>
+
+<p>同分析によると、2011年10月時点で同サービスを利用する開発者の利用するオープンソースのデータベースの利用は下記の割合だという。MySQLが45%を超え、次いでMongoDBが20%超えに、PostgreSQLが15%超えである。未だにやはりMySQLを選択する人が多いことが窺える。今なおPostgreSQLをわざわざ選択しようという動機はHerokuで無料で使えることの他に何かあるだろうか。日本の開発者に限定して分析すればまた選択は変わるのかもしれない。また探してみよう。</p>
+
+<p><img src="https://coffeetable.github.io/images/2015/03/30/open-source-database-marketshare-oct-2011.png" alt="" />
+</p>
+
+<p>またヨーロッパとアメリカでの利用の違いを見たリージョナル分析によれば、アメリカではMongoDBを選ぶ人が増えている分、MySQLとPostgreSQLの利用はヨーロッパのほうが割合的に多いことがわかった。アメリカのほうがイノベーターやアーリーアダプター層が多いために、RDBMSではなくNoSQLを選択している人が多いという、極めて当然の結果であると言えよう。</p>
+
+<p><img src="https://coffeetable.github.io/images/2015/03/30/open-source-database-marketshare-by-region-oct-2011.png" alt="" />
+</p>
+
+<h2 id="basic-comammands-of-postgresql:4c50abb395f342fbaa208b80f6daec6b">Basic Comammands of PostgreSQL</h2>
+
+<p>さて本題のコマンドラインのメモに戻ろう。
+今回は特定のユーザーのみがアクセスできる特定のテーブルを用意したく調べた。</p>
+
+<h3 id="新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b">新しくユーザーを作る</h3>
+
+<p>まずは新しくユーザーを作る。<code>password</code>も設定する。下記ユーザー名とパスワードはダミー。ユーザー名に<code>-</code>などの文字が入ると<code>ERROR:  syntax error at or near &quot;-&quot;</code>とエラーが起きるため、ダブルクォートで囲んでおく必要がある。</p>
+
+<pre><code># create user &quot;new&quot; with password 'roOp8jOv0fAl4';
+CREATE ROLE
+</code></pre>
+
+<p>ここで気になるのはPostgreSQLではユーザーという概念を「ロール（ROLE）」という言葉で表していることだ。その意図はまた調べよう。</p>
+
+<p>ちなみに作ったユーザーを削除するには<code>drop</code>コマンドで行う。</p>
+
+<pre><code># drop user &quot;new&quot;;
+DROP ROLE
+</code></pre>
+
+<h3 id="作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b">作ったユーザーをOwnerとしたテーブルを新しく作る</h3>
+
+<p>上記で作成したユーザーをOwnerとしたテーブルを新たに作る。テーブル名はダミー。</p>
+
+<pre><code># create database &quot;app_development&quot; owner &quot;new&quot;;
+CREATE DATABASE
+</code></pre>
+
+<p>テーブルのオーナーを別のユーザーへ切り替えたい場合は<code>alter</code>コマンドで行う。</p>
+
+<pre><code># alter database &quot;app_development&quot; owner to &quot;yasu&quot;;
+ALTER DATABASE
+</code></pre>
+
+<h3 id="確認:4c50abb395f342fbaa208b80f6daec6b">確認</h3>
+
+<p>ユーザー一覧は、psqlコマンドのコンソールから<code>\du</code>で確認することができる。</p>
+
+<pre><code># \du
+ new       |                                                | {}
+ yasu      | Superuser, Create role, Create DB, Replication | {}
+</code></pre>
+
+<p>ちなみに下記のような<code>select</code>文からも確認することはできる。</p>
+
+<pre><code># select * from pg_user;
+ yasu      |       10 | t           | t        | t         | t       | ******** |          |
+ new       |    24579 | f           | f        | f         | f       | ******** |          |
+</code></pre>
+
+<pre><code># select * from pg_shadow;
+ yasu      |       10 | t           | t        | t         | t       |                                     |          |
+ new       |    24579 | f           | f        | f         | f       | md5bc975724014f7d69fbf7cbb8c9a540fe |          |
+</code></pre>
+
+</div>
+</article>
+
+
+                            
+                        
+                            
+                                <article class="post">
+<header>
+  <h2 class="post-title"><a href="http://localhost:1313/2015/03/30/importance-of-canguilhem/">Importance of Canguilhem </a> </h2>
   <div class="post-meta">Mar 30, 2015</div>
 </header>
 <div class="summary">
@@ -127,7 +214,7 @@
                             
                                 <article class="post">
 <header>
-  <h2 class="post-title"><a href="https://coffeetable.github.io/2015/03/16/round-table-talk-in-coffeetable/">Round-table talk in Coffeetable </a> </h2>
+  <h2 class="post-title"><a href="http://localhost:1313/2015/03/16/round-table-talk-in-coffeetable/">Round-table talk in Coffeetable </a> </h2>
   <div class="post-meta">Mar 16, 2015</div>
 </header>
 <div class="summary">
@@ -158,7 +245,7 @@
                     </div>
                     </br>
                     <h4>
-                        <a href="https://coffeetable.github.io/post/">Archive</a>
+                        <a href="http://localhost:1313/post/">Archive</a>
                     </h4>
                 </section>
             </div>

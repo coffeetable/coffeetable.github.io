@@ -2,22 +2,104 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>COFFEETABLE</title>
-    <link>https://coffeetable.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on COFFEETABLE</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-JP</language>
     
     
     <copyright>All rights reserved - 2015</copyright>
-    <lastBuildDate>Mon, 30 Mar 2015 04:49:35 JST</lastBuildDate>
-    <atom:link href="https://coffeetable.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 30 Mar 2015 16:10:00 JST</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Frist steps using PostgreSQL</title>
+      <link>http://localhost:1313/2015/03/30/frist-steps-using-postgresql/</link>
+      <pubDate>Mon, 30 Mar 2015 16:10:00 JST</pubDate>
+      
+      <guid>http://localhost:1313/2015/03/30/frist-steps-using-postgresql/</guid>
+      <description>
+
+&lt;p&gt;PostgreSQLを久々に利用するのに、基本的なコマンドを調べたため、まとめておく。&lt;/p&gt;
+
+&lt;h2 id=&#34;open-source-database-market-share-in-2011:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Open source database market share in 2011&lt;/h2&gt;
+
+&lt;p&gt;その前に久々に市場シェアを調べてみたところ、&lt;a href=&#34;http://jelastic.com/&#34;&gt;Jelastic.com&lt;/a&gt;による彼らのサービスを利用する1,000人の開発者によるDB選択のマーケットシェア分析の発表レポート&lt;a href=&#34;http://readwrite.com/2011/10/21/mysql-leads-open-source-market&#34;&gt;*1&lt;/a&gt;を見た。2011年10月時点の分析結果である。ちなみにJelasticとはロシアのJavaに特化したPaaSを提供するHerokuのようなサービスだ。日本では使えるねっと株式会社が提供している&lt;a href=&#34;https://www.tsukaeru.net/info/press_release/06/1195&#34;&gt;*2&lt;/a&gt;。&lt;/p&gt;
+
+&lt;p&gt;同分析によると、2011年10月時点で同サービスを利用する開発者の利用するオープンソースのデータベースの利用は下記の割合だという。MySQLが45%を超え、次いでMongoDBが20%超えに、PostgreSQLが15%超えである。未だにやはりMySQLを選択する人が多いことが窺える。今なおPostgreSQLをわざわざ選択しようという動機はHerokuで無料で使えることの他に何かあるだろうか。日本の開発者に限定して分析すればまた選択は変わるのかもしれない。また探してみよう。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://coffeetable.github.io/images/2015/03/30/open-source-database-marketshare-oct-2011.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;またヨーロッパとアメリカでの利用の違いを見たリージョナル分析によれば、アメリカではMongoDBを選ぶ人が増えている分、MySQLとPostgreSQLの利用はヨーロッパのほうが割合的に多いことがわかった。アメリカのほうがイノベーターやアーリーアダプター層が多いために、RDBMSではなくNoSQLを選択している人が多いという、極めて当然の結果であると言えよう。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://coffeetable.github.io/images/2015/03/30/open-source-database-marketshare-by-region-oct-2011.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;h2 id=&#34;basic-comammands-of-postgresql:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Basic Comammands of PostgreSQL&lt;/h2&gt;
+
+&lt;p&gt;さて本題のコマンドラインのメモに戻ろう。
+今回は特定のユーザーのみがアクセスできる特定のテーブルを用意したく調べた。&lt;/p&gt;
+
+&lt;h3 id=&#34;新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;新しくユーザーを作る&lt;/h3&gt;
+
+&lt;p&gt;まずは新しくユーザーを作る。&lt;code&gt;password&lt;/code&gt;も設定する。下記ユーザー名とパスワードはダミー。ユーザー名に&lt;code&gt;-&lt;/code&gt;などの文字が入ると&lt;code&gt;ERROR:  syntax error at or near &amp;quot;-&amp;quot;&lt;/code&gt;とエラーが起きるため、ダブルクォートで囲んでおく必要がある。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# create user &amp;quot;new&amp;quot; with password &#39;roOp8jOv0fAl4&#39;;
+CREATE ROLE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ここで気になるのはPostgreSQLではユーザーという概念を「ロール（ROLE）」という言葉で表していることだ。その意図はまた調べよう。&lt;/p&gt;
+
+&lt;p&gt;ちなみに作ったユーザーを削除するには&lt;code&gt;drop&lt;/code&gt;コマンドで行う。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# drop user &amp;quot;new&amp;quot;;
+DROP ROLE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;作ったユーザーをOwnerとしたテーブルを新しく作る&lt;/h3&gt;
+
+&lt;p&gt;上記で作成したユーザーをOwnerとしたテーブルを新たに作る。テーブル名はダミー。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# create database &amp;quot;app_development&amp;quot; owner &amp;quot;new&amp;quot;;
+CREATE DATABASE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;テーブルのオーナーを別のユーザーへ切り替えたい場合は&lt;code&gt;alter&lt;/code&gt;コマンドで行う。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# alter database &amp;quot;app_development&amp;quot; owner to &amp;quot;yasu&amp;quot;;
+ALTER DATABASE
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;確認:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;確認&lt;/h3&gt;
+
+&lt;p&gt;ユーザー一覧は、psqlコマンドのコンソールから&lt;code&gt;\du&lt;/code&gt;で確認することができる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# \du
+ new       |                                                | {}
+ yasu      | Superuser, Create role, Create DB, Replication | {}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちなみに下記のような&lt;code&gt;select&lt;/code&gt;文からも確認することはできる。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# select * from pg_user;
+ yasu      |       10 | t           | t        | t         | t       | ******** |          |
+ new       |    24579 | f           | f        | f         | f       | ******** |          |
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;# select * from pg_shadow;
+ yasu      |       10 | t           | t        | t         | t       |                                     |          |
+ new       |    24579 | f           | f        | f         | f       | md5bc975724014f7d69fbf7cbb8c9a540fe |          |
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Importance of Canguilhem</title>
-      <link>https://coffeetable.github.io/2015/03/30/importance-of-canguilhem/</link>
+      <link>http://localhost:1313/2015/03/30/importance-of-canguilhem/</link>
       <pubDate>Mon, 30 Mar 2015 04:49:35 JST</pubDate>
       
-      <guid>https://coffeetable.github.io/2015/03/30/importance-of-canguilhem/</guid>
+      <guid>http://localhost:1313/2015/03/30/importance-of-canguilhem/</guid>
       <description>&lt;p&gt;自分自身の言葉で文章を書くことというのは、等身大の自分自身を正確に問診しながら、書く対象への距離を正確に把握していくプロセスであるように思う。それは自分自身の理解を十全に問う行為であるため、苦しい営みであるが、訓練として続けていきたい。&lt;/p&gt;
 
 &lt;p&gt;何について書こうかと主題を探し、調査するのに時間がかかった。書く内容がいかに自分の中で形成され、組み立てられていくのか、その興味の広がりに意識を集中すると、神経細胞から触手が伸びてまた別の神経細胞へと接続する感覚が感じられる気がしてくる。神経細胞について調べてみると、ここで触手と言っているものは「軸索（じくさく、axon）」と呼ばれるもので、神経細胞の細胞体（細胞核などが集中する部位）から伸びている突起状のもので、神経細胞において信号の出力を担うものだと理解した。この軸索の先端が他の神経細胞と接続してシナプスを形成するのだという。よく聞くこのシナプスとは何であろうか。一行一行文章を書き進めながら、新たな疑問が生じた瞬間である。神経細胞から神経細胞へと情報が伝達され、興味の矛先が移り行き、主題が、理解が、そしてアイデンティティが形成されてゆくプロセスに想いを馳せる。シナプスについて答えておこう。簡潔に言ってシナプスとは、ニューロンとニューロンの接触部のことを言うとのことである。神経細胞とニューロンを同義で用いたが、日本では「神経細胞」を神経細胞の細胞体のみを指す言葉として用いられることが慣習としてあるようで、全突起の先端までも含めた神経細胞（神経細胞体、soma）のことをニューロンという。神経の基本単位のことがニューロンと呼ばれ、これを日本語で「神経単位」と呼ぶのだ。神経細胞ではなかった。理解を正そう。つまり僕が感じていたのは、ニューロンとニューロンが接続するシナプスが形成される感覚であったのだろうか。軸索が伸びる感覚がここでは消えてしまっているが、それは伸びる感覚ではなく、神経伝達物質が送り出され、放出し、他のニューロンへと情報伝達が行われる感覚のいずれであったのかは定かでない。少なくともここでは、等身大の自分の感覚、理解に沿って知識をつけていくプロセスを行うことができたように思う。この感覚を常に持って、書き続けよう。ニューロンについてはまた改めて本を読むことにする。&lt;/p&gt;
@@ -48,10 +130,10 @@
     
     <item>
       <title>Round-table talk in Coffeetable</title>
-      <link>https://coffeetable.github.io/2015/03/16/round-table-talk-in-coffeetable/</link>
+      <link>http://localhost:1313/2015/03/16/round-table-talk-in-coffeetable/</link>
       <pubDate>Mon, 16 Mar 2015 00:44:54 JST</pubDate>
       
-      <guid>https://coffeetable.github.io/2015/03/16/round-table-talk-in-coffeetable/</guid>
+      <guid>http://localhost:1313/2015/03/16/round-table-talk-in-coffeetable/</guid>
       <description>&lt;p&gt;Welcome to Coffeetable.&lt;/p&gt;
 
 &lt;p&gt;新しくブログを始めます。その最初のブログ記事です。
