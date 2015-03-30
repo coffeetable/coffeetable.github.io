@@ -41,7 +41,7 @@
 &lt;p&gt;さて本題のコマンドラインのメモに戻ろう。
 今回は特定のユーザーのみがアクセスできる特定のテーブルを用意したく調べた。&lt;/p&gt;
 
-&lt;h3 id=&#34;新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;新しくユーザーを作る&lt;/h3&gt;
+&lt;h4 id=&#34;新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;新しくユーザーを作る&lt;/h4&gt;
 
 &lt;p&gt;まずは新しくユーザーを作る。&lt;code&gt;password&lt;/code&gt;も設定する。下記ユーザー名とパスワードはダミー。ユーザー名に&lt;code&gt;-&lt;/code&gt;などの文字が入ると&lt;code&gt;ERROR:  syntax error at or near &amp;quot;-&amp;quot;&lt;/code&gt;とエラーが起きるため、ダブルクォートで囲んでおく必要がある。&lt;/p&gt;
 
@@ -57,7 +57,7 @@ CREATE ROLE
 DROP ROLE
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;作ったユーザーをOwnerとしたテーブルを新しく作る&lt;/h3&gt;
+&lt;h4 id=&#34;作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;作ったユーザーをOwnerとしたテーブルを新しく作る&lt;/h4&gt;
 
 &lt;p&gt;上記で作成したユーザーをOwnerとしたテーブルを新たに作る。テーブル名はダミー。&lt;/p&gt;
 
@@ -71,7 +71,7 @@ CREATE DATABASE
 ALTER DATABASE
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;確認:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;確認&lt;/h3&gt;
+&lt;h4 id=&#34;確認:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;確認&lt;/h4&gt;
 
 &lt;p&gt;ユーザー一覧は、psqlコマンドのコンソールから&lt;code&gt;\du&lt;/code&gt;で確認することができる。&lt;/p&gt;
 

@@ -108,7 +108,7 @@
 <p>さて本題のコマンドラインのメモに戻ろう。
 今回は特定のユーザーのみがアクセスできる特定のテーブルを用意したく調べた。</p>
 
-<h3 id="新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b">新しくユーザーを作る</h3>
+<h4 id="新しくユーザーを作る:4c50abb395f342fbaa208b80f6daec6b">新しくユーザーを作る</h4>
 
 <p>まずは新しくユーザーを作る。<code>password</code>も設定する。下記ユーザー名とパスワードはダミー。ユーザー名に<code>-</code>などの文字が入ると<code>ERROR:  syntax error at or near &quot;-&quot;</code>とエラーが起きるため、ダブルクォートで囲んでおく必要がある。</p>
 
@@ -124,7 +124,7 @@ CREATE ROLE
 DROP ROLE
 </code></pre>
 
-<h3 id="作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b">作ったユーザーをOwnerとしたテーブルを新しく作る</h3>
+<h4 id="作ったユーザーをownerとしたテーブルを新しく作る:4c50abb395f342fbaa208b80f6daec6b">作ったユーザーをOwnerとしたテーブルを新しく作る</h4>
 
 <p>上記で作成したユーザーをOwnerとしたテーブルを新たに作る。テーブル名はダミー。</p>
 
@@ -138,7 +138,7 @@ CREATE DATABASE
 ALTER DATABASE
 </code></pre>
 
-<h3 id="確認:4c50abb395f342fbaa208b80f6daec6b">確認</h3>
+<h4 id="確認:4c50abb395f342fbaa208b80f6daec6b">確認</h4>
 
 <p>ユーザー一覧は、psqlコマンドのコンソールから<code>\du</code>で確認することができる。</p>
 
