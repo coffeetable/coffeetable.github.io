@@ -98,18 +98,27 @@ em {
 }
 
 blockquote {
-  margin: 1em 0;
-  padding: 2em 0;
-  background: $gray-lightest;
-  border: 1px solid $gray-lighter;
-  border-radius: $border-radius;
-  font-family: $serif-font;
-  font-weight: lighter;
-  font-style: italic;
-  font-size: 1.3em;
-  text-align: center;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1.6em 0 1.6em -2.2em;
+  padding: 0 0 0 1.6em;
+  border-left: #4a4a4a 0.4em solid;
+  clear: both;
+  overflow: hidden;
 
   p {
+    color: #656561;
+    font-size: 1.8rem;
+    margin: 0.8em 0;
+        
+    &:before {
+      content: '';
+      background: url('http://static.tumblr.com/msonfaf/MWsl5o8mv/quotemark.png') 0 0 no-repeat;
+      width: 78px;
+      height: 59px;
+      float: left;
+      padding: 0 0 0 10px;
+    }
 
     &:last-child {
       margin-bottom: 0;
