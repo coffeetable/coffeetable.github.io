@@ -22,7 +22,7 @@
 
 &lt;p&gt;PostgreSQLを久々に利用するのに、基本的なコマンドを調べたため、まとめておく。&lt;/p&gt;
 
-&lt;h2 id=&#34;open-source-database-market-share-in-2011:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Open source database market share in 2011&lt;/h2&gt;
+&lt;h3 id=&#34;open-source-database-market-share-in-2011:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Open source database market share in 2011&lt;/h3&gt;
 
 &lt;p&gt;その前に久々に市場シェアを調べてみたところ、&lt;a href=&#34;http://jelastic.com/&#34;&gt;Jelastic.com&lt;/a&gt;による彼らのサービスを利用する1,000人の開発者によるDB選択のマーケットシェア分析の発表レポート&lt;a href=&#34;http://readwrite.com/2011/10/21/mysql-leads-open-source-market&#34;&gt;*1&lt;/a&gt;を見た。2011年10月時点の分析結果である。ちなみにJelasticとはロシアのJavaに特化したPaaSを提供するHerokuのようなサービスだ。日本では使えるねっと株式会社が提供している&lt;a href=&#34;https://www.tsukaeru.net/info/press_release/06/1195&#34;&gt;*2&lt;/a&gt;。&lt;/p&gt;
 
@@ -36,7 +36,7 @@
 &lt;p&gt;&lt;img src=&#34;https://coffeetable.github.io/images/2015/03/30/open-source-database-marketshare-by-region-oct-2011.png&#34; alt=&#34;&#34; /&gt;
 &lt;/p&gt;
 
-&lt;h2 id=&#34;basic-comammands-of-postgresql:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Basic Comammands of PostgreSQL&lt;/h2&gt;
+&lt;h3 id=&#34;basic-comammands-of-postgresql:4c50abb395f342fbaa208b80f6daec6b&#34;&gt;Basic Comammands of PostgreSQL&lt;/h3&gt;
 
 &lt;p&gt;さて本題のコマンドラインのメモに戻ろう。
 今回は特定のユーザーのみがアクセスできる特定のテーブルを用意したく調べた。&lt;/p&gt;
